@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.technisat.radiothek"
+    android:versionCode="1"
+    android:versionName="1.0.0" >
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- add IAB permission -->
+    <uses-permission android:name="com.android.vending.BILLING" />
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="21" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/logo_actionbar"
+        android:label="@string/app_name"
+        android:logo="@drawable/logo_actionbar"
+        android:screenOrientation="landscape"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.technisat.radiotheque.splash.SplashActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.technisat.radiotheque.main.MainGridViewActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:launchMode="singleTop"
+            android:screenOrientation="landscape" >
+            <meta-data
+                android:name="android.app.default_searchable"
+                android:value="com.technisat.radiotheque.stationlist.DisplayStationListActivity" />
+        </activity>
+        <activity
+            android:name="com.technisat.radiotheque.main.TelepadMainActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:launchMode="singleTop"
+            android:screenOrientation="landscape" >
+            <meta-data
+                android:name="android.app.default_searchable"
+                android:value="com.technisat.radiotheque.stationlist.DisplayStationListActivity" />
+        </activity>
+        <activity
+            android:name="com.technisat.radiotheque.genre.TelepadGenreActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:launchMode="singleTop"
+            android:screenOrientation="landscape" >
+            <meta-data
+                android:name="android.app.default_searchable"
+                android:value="com.technisat.radiotheque.stationlist.DisplayStationListActivity" />
+        </activity>
+        <activity
+            android:name="com.technisat.radiotheque.genre.GenreActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:parentActivityName="com.technisat.radiotheque.main.MainActivity"
+            android:screenOrientation="landscape" >
+            <meta-data
+                android:name="android.app.default_searchable"
+                android:value="com.technisat.radiotheque.stationlist.DisplayStationListActivity" />
+        </activity>
+        <activity
+            android:name="com.technisat.radiotheque.stationlist.TelepadDisplayStationListActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:launchMode="singleTop"
+            android:screenOrientation="landscape" >
+            <meta-data
+                android:name="android.app.default_searchable"
+                android:value="com.technisat.radiotheque.stationlist.TelepadDisplayStationListActivity" />
+
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+        </activity>
+        <activity
+            android:name="com.technisat.radiotheque.stationlist.DisplayStationListActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:launchMode="singleTop"
+            android:screenOrientation="landscape" >
+            <meta-data
+                android:name="android.app.default_searchable"
+                android:value="com.technisat.radiotheque.stationlist.TelepadDisplayStationListActivity" />
+
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+        </activity>
+        <activity
+            android:name="com.technisat.radiotheque.main.MainActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:launchMode="singleTop"
+            android:screenOrientation="landscape" >
+            <meta-data
+                android:name="android.app.default_searchable"
+                android:value="com.technisat.radiotheque.stationlist.TelepadDisplayStationListActivity" />
+        </activity>
+        <activity
+            android:name="com.technisat.radiotheque.station.TelepadStationActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+            <meta-data
+                android:name="android.app.default_searchable"
+                android:value="com.technisat.radiotheque.stationlist.TelepadDisplayStationListActivity" />
+        </activity>
+        <activity
+            android:name="com.technisat.radiotheque.station.TelepadFullscreenStationActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+            <meta-data
+                android:name="android.app.default_searchable"
+                android:value="com.technisat.radiotheque.stationlist.TelepadDisplayStationListActivity" />
+        </activity>
+        <activity
+            android:name="com.technisat.radiotheque.station.StationActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="landscape" >
+            <meta-data
+                android:name="android.app.default_searchable"
+                android:value="com.technisat.radiotheque.stationlist.TelepadDisplayStationListActivity" />
+        </activity>
+        <activity
+            android:name="com.technisat.radiotheque.about.AboutActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:launchMode="singleTop"
+            android:screenOrientation="landscape" >
+            <meta-data
+                android:name="android.app.default_searchable"
+                android:value="com.technisat.radiotheque.stationlist.TelepadDisplayStationListActivity" />
+        </activity>
+        <activity
+            android:name="com.technisat.radiotheque.melden.MeldenActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:launchMode="singleTop"
+            android:screenOrientation="landscape" >
+        </activity>
+        <activity
+            android:name="com.technisat.radiotheque.impressum.ImpressumActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:launchMode="singleTop"
+            android:screenOrientation="landscape" >
+            <meta-data
+                android:name="android.app.default_searchable"
+                android:value="com.technisat.radiotheque.stationlist.TelepadDisplayStationListActivity" />
+        </activity>
+
+        <service
+            android:name="com.technisat.radiotheque.service.StationService"
+            android:enabled="true"
+            android:exported="false" >
+        </service>
+        <service
+            android:name="com.technisat.radiotheque.service.MediaPlayerService"
+            android:enabled="true"
+            android:exported="false" >
+        </service>
+    </application>
+
+</manifest>

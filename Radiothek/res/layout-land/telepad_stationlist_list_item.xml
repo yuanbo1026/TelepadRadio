@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="164dp"
+    android:background="@color/Grid_Item_country"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:id="@+id/telepad_iv_stationlist_item_favicon"
+        android:layout_width="64dp"
+        android:layout_height="80dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="20dp"
+        android:contentDescription="@null"
+        android:src="@drawable/ic_stationlist_fav_h" />
+
+    <LinearLayout
+        android:id="@+id/telepad_tv_stationlist_item_linearlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:gravity="center_vertical"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/telepad_tv_stationlist_item_stationname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:textSize="25sp"
+            android:text="@string/playerfragment.text.loading"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/RadiothekBlueLight"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/telepad_tv_stationlist_item_stationgenre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLength="20"
+            android:textSize="15sp"
+            android:layout_marginLeft="20dp"
+            android:singleLine="true"
+            android:text="@string/playerfragment.text.loading"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/RadiothekGrey" />
+    </LinearLayout>
+
+</RelativeLayout>

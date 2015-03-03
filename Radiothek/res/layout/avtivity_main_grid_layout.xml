@@ -1,0 +1,28 @@
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="fill_horizontal"
+    android:columnCount="4"
+    android:rowCount="1" >
+
+    <Button
+        android:layout_gravity="fill_vertical"
+        android:background="@color/Grid_Item_history"
+        android:text="1" />
+
+    <Button
+        android:layout_gravity="fill_vertical"
+        android:background="@color/Grid_Item_history"
+        android:text="2" />
+
+    <Button
+        android:layout_gravity="fill_vertical"
+        android:background="@color/Grid_Item_history"
+        android:text="3" />
+
+    <Button
+        android:layout_gravity="fill_vertical"
+        android:background="@color/Grid_Item_history"
+        android:text="4" />
+
+</GridLayout>

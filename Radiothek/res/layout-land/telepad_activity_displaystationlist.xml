@@ -1,0 +1,86 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/RealWhite"
+    tools:context=".DisplayStationListActivity" >
+	
+	<LinearLayout
+	    android:gravity="center_horizontal"
+	    android:id="@+id/tapbar"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="horizontal"
+	    android:background="@color/RadiothekBlueLight"
+	    android:visibility="gone" > <!-- activate for grid view later again -->
+		
+		<ImageButton
+		    android:id="@+id/b_list"
+		    android:layout_width="50dp"
+		    android:layout_height="50dp"
+		    android:paddingTop="10dp"
+		    android:paddingBottom="10dp"
+		    android:paddingLeft="10dp"
+		    android:paddingRight="10dp"
+		    android:contentDescription="@null"
+		    android:src="@drawable/ic_stationlist"
+		    android:background="@color/RadiothekBlueLight"
+		    android:onClick="changeToList" />
+		
+		<ImageButton
+		    android:id="@+id/b_grid"
+		    android:layout_width="50dp"
+		    android:layout_height="50dp"
+		    android:paddingTop="10dp"
+		    android:paddingBottom="10dp"
+		    android:paddingLeft="10dp"
+		    android:paddingRight="10dp"
+		    android:contentDescription="@null"
+		    android:background="@color/RealWhite"
+		    android:onClick="changeToGrid" />
+	</LinearLayout>
+	
+	<ViewSwitcher
+        android:id="@+id/viewswitcher"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tapbar"
+        android:clipToPadding="false"
+        android:cacheColorHint="#00000000"
+	    android:paddingBottom="0dp" >
+		
+        <ListView
+        	android:id="@+id/telepad_lv_displaystationlist_list"
+        	android:layout_width="match_parent"
+        	android:layout_height="match_parent"
+        	android:cacheColorHint="#00000000"
+        	android:background="@color/Grid_Item_country"
+        	android:divider="@color/RadiothekBlueDark"
+        	android:dividerHeight="1dp"
+        	tools:listitem="@layout/telepad_stationlist_list_item" >
+        </ListView>
+        
+    	<!-- <GridView
+       		android:id="@+id/lv_displaystationlist_grid"
+        	android:layout_width="match_parent"
+        	android:layout_height="match_parent"
+        	android:background="@color/RealWhite"
+        	android:numColumns="2"
+        	android:stretchMode="columnWidth"
+        	android:divider="@color/RadiothekBlueLight"
+        	android:dividerHeight="1dp"
+        	tools:listitem="@layout/stationlist_grid_item" >
+        </GridView> -->
+        
+    </ViewSwitcher>
+	
+    <TextView android:id="@android:id/empty"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:visibility="gone"
+    android:gravity="center"
+    android:textAppearance="?android:attr/textAppearanceMedium"
+    android:textColor="@color/RadiothekBlueLight"
+    android:text="@string/radiothek.displaystationlist.text.history" />
+    
+</RelativeLayout>

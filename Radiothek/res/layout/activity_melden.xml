@@ -1,0 +1,89 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/RadiothekBlueDark"
+    tools:context=".GenreActivity" >
+
+    <TextView
+        android:id="@+id/tv_activity_melden_caption"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="@string/meldenactivity.caption.problem"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/RadiothekBlueLight" />
+
+    <View
+        android:id="@+id/view_line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/tv_activity_melden_caption"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:background="@color/RadiothekBlueLight" />
+    
+    <TextView
+        android:id="@+id/tv_activity_melden_subcaption"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/view_line"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="@string/meldenactivity.text.generalproblem"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/RadiothekBlueLight" />
+
+    <EditText
+        android:id="@+id/et_activity_melden_textfield"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/linearLayout1"
+        android:layout_below="@id/tv_activity_melden_subcaption"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:gravity="top"
+        android:hint="@string/meldenactivity.text.enterproblem"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/RadiothekGrey"
+        android:inputType="textMultiLine" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btn_activity_melden_abort"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:onClick="abbrechen"
+            style="?android:attr/buttonBarButtonStyle"
+            android:text="@string/meldenactivity.button.abort"
+            android:textColor="@color/RadiothekBlueLight" />
+
+        <Button
+            android:id="@+id/btn_activity_melden_send"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:onClick="senden"
+            style="?android:attr/buttonBarButtonStyle"
+            android:text="@string/meldenactivity.button.send"
+            android:textColor="@color/RadiothekBlueLight" />
+    </LinearLayout>
+
+</RelativeLayout>

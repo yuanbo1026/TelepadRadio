@@ -1,0 +1,26 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context=".DisplayStationListActivity"
+    android:layout_gravity="fill"
+    android:background="@color/RadiothekBlueDark" >
+
+    <GridView
+        android:id="@+id/gv_main_grid"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:numColumns="4"
+        android:layout_gravity="fill"
+        tools:listitem="@layout/main_grid_item" >
+
+    </GridView>
+
+    <!--  include
+        android:layout_width="fill_parent"
+        android:id="@+id/frame_banner"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        layout="@layout/banner_layout" /-->
+
+</LinearLayout>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/action_bar_bg"
+    android:orientation="vertical"
+    tools:context=".TelepadStationDetailFragment" >
+    
+    <ProgressBar
+            android:id="@+id/telepad_pb_stationdetail_fragment_spinner_fullscreen"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_centerHorizontal="true"
+            android:padding="15dp"
+            android:visibility="gone" />
+
+    <com.technisat.radiotheque.genre.SquareImageView
+            android:id="@+id/telepad_iv_station_fullscreen_cover"
+            android:layout_width="400dp"
+            android:layout_height="400dp"
+            android:layout_marginTop="20dp"
+            android:layout_centerHorizontal="true"
+            android:background="@color/RadiothekBlueDark"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_default_station" />
+
+    <LinearLayout
+        android:id="@+id/telepad_stationdetail_information_fullscreen_ll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/telepad_tv_stationdetail_item_fullscreen_stationname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/playerfragment.text.loading"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/RadiothekWhite"
+            android:textSize="40sp"/>
+
+        <TextView
+            android:id="@+id/telepad_tv_stationdetail_item_fullscreen_stationgenre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:ellipsize="end"
+            android:maxLength="100"
+            android:singleLine="true"
+            android:text="@string/playerfragment.text.loading"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/RadiothekBlueLight"
+            android:textSize="25sp" />
+    </LinearLayout>
+
+</RelativeLayout>

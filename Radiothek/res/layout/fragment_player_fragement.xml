@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".PlayerFragement"
+    android:orientation="horizontal"
+    android:background="@color/RealWhite" >
+    
+    <ImageView
+	    android:id="@+id/iv_player_fragment_shadowtop"
+	    android:layout_width="fill_parent"
+	    android:scaleType="fitXY"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentTop="true"
+	    android:src="@drawable/ic_topshadow_player"
+	    android:contentDescription="@null" />
+
+            
+    <ImageView
+		android:id="@+id/iv_player_fragment_playbutton"
+		android:layout_width="60dp"
+		android:layout_height="60dp"
+		android:padding="10dp"
+		android:layout_below="@+id/iv_player_fragment_shadowtop"
+		android:src="@drawable/ic_play_deactivated"
+		android:layout_centerVertical="true"
+		android:contentDescription="@null" />
+    
+    <ProgressBar
+	    android:id="@+id/pb_player_fragment_spinner"
+	    android:layout_width="60dp"
+	    android:layout_height="60dp"
+	    android:layout_below="@+id/iv_player_fragment_shadowtop"
+	    android:layout_toRightOf="@+id/iv_player_fragment_playbutton"
+	    android:layout_centerVertical="true"
+	    android:padding="15dp"
+	    android:visibility="gone" />
+
+	<TextView
+	    android:id="@+id/tv_player_fragment_meta"
+	    android:layout_width="match_parent"
+	    android:layout_height="60dp"	  
+	    android:text="@string/playerfragment.text.loading"
+	    android:gravity="center"
+	    android:textColor="@color/RadiothekBlueLight"
+	    android:layout_centerInParent="true"
+	    android:layout_toRightOf="@+id/iv_player_fragment_playbutton"
+	    android:layout_toLeftOf="@+id/iv_player_fragment_stationlogo"
+	    android:textAppearance="?android:attr/textAppearanceSmall" />
+	
+	<ImageView
+	    android:id="@+id/iv_player_fragment_stationlogo"
+	    android:layout_width="61dp"
+	    android:layout_height="60dp"
+	    android:paddingLeft="1dp"
+	    android:layout_below="@+id/iv_player_fragment_shadowtop"
+	    android:background="@color/RadiothekBlueLight"
+	    android:src="@drawable/ic_default_station"
+	    android:layout_alignParentRight="true"
+	    android:contentDescription="@null" />
+</RelativeLayout>

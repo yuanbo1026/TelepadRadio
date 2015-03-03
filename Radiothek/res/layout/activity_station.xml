@@ -1,0 +1,38 @@
+<ScrollView 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent" 
+    android:layout_height="fill_parent">
+
+	<RelativeLayout	    
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="vertical"
+	    android:background="@color/RadiothekBlueLight" >    
+	
+	   <ProgressBar
+	        android:id="@+id/pb_station_spinner"
+	        style="?android:attr/progressBarStyleLarge"
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent"
+	        android:layout_above="@+id/fg_stationdetail"
+	        android:visibility="gone" />
+		
+	  <com.technisat.radiotheque.genre.SquareImageView
+	        android:id="@+id/iv_station_cover"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:scaleType="fitCenter"
+	        android:src="@drawable/ic_default_station"
+	        android:background="@color/RadiothekBlueDark" />
+	  
+	  <fragment
+	      android:id="@+id/fg_stationdetail"
+	      android:name="com.technisat.radiotheque.stationdetail.StationDetailFragment"
+	      android:layout_width="match_parent"
+	      android:layout_height="wrap_content"
+	      android:layout_below="@+id/iv_station_cover"
+	      tools:layout="@layout/fragment_station_detail" />
+	    
+	  </RelativeLayout>
+</ScrollView>

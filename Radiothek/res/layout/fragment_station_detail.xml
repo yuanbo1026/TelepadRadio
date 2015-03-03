@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".StationDetailFragment"
+    android:orientation="vertical"
+    android:background="@color/RealWhite">
+    
+    <RelativeLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:id="@+id/rl_stationdetail_playbox" >
+	    
+	    <ImageView
+		    android:id="@+id/iv_stationdetail_fragment_shadowtop"
+		    android:layout_width="fill_parent"
+		    android:scaleType="fitXY"
+		    android:layout_height="wrap_content"
+		    android:layout_alignParentTop="true"
+		    android:src="@drawable/ic_topshadow_player"
+		    android:contentDescription="@null" />
+	
+	            
+	    <ImageView
+			android:id="@+id/iv_stationdetail_fragment_playbutton"
+			android:layout_width="60dp"
+			android:layout_height="60dp"
+			android:padding="10dp"
+			android:layout_below="@+id/iv_stationdetail_fragment_shadowtop"
+			android:src="@drawable/ic_play_deactivated"
+			android:layout_centerVertical="true"
+			android:contentDescription="@null" />	    
+	    
+		<ProgressBar
+		    android:id="@+id/pb_stationdetail_fragment_spinner"
+		    android:layout_width="60dp"
+		    android:layout_height="60dp"
+		   	android:layout_toRightOf="@+id/iv_stationdetail_fragment_playbutton"
+		    android:layout_below="@+id/iv_stationdetail_fragment_shadowtop"
+		    android:layout_centerVertical="true"
+		    android:padding="15dp"
+		    android:visibility="visible" />
+	
+		<TextView
+		    android:id="@+id/tv_stationdetail_fragment_meta"
+		    android:layout_width="match_parent"
+		    android:layout_height="60dp"	  
+		    android:text="@string/playerfragment.text.loading"
+		    android:gravity="center"
+		    android:textColor="@color/RadiothekBlueLight"
+		    android:layout_centerInParent="true"
+		    android:layout_toRightOf="@+id/iv_stationdetail_fragment_playbutton"
+		    android:layout_toLeftOf="@+id/iv_stationdetail_fragment_buy"
+		    android:textAppearance="?android:attr/textAppearanceSmall"/>
+		
+		<ImageView android:layout_height="60dp"
+	        android:layout_width="0.5dp"
+	        android:layout_marginTop="1dp"
+	        android:background="@color/RadiothekBlueLight"
+	        android:layout_toLeftOf="@+id/iv_stationdetail_fragment_buy"
+	        android:contentDescription="@null" />
+		
+		<ImageView
+		    android:id="@+id/iv_stationdetail_fragment_buy"
+		    android:layout_width="wrap_content"
+		    android:layout_height="60dp"
+		    android:layout_below="@+id/iv_stationdetail_fragment_shadowtop"
+		    android:layout_alignParentRight="true"
+		    android:layout_marginLeft="10dp"
+        	android:layout_marginRight="10dp"
+		    android:contentDescription="@null" />
+
+	</RelativeLayout>
+	
+    <RelativeLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:id="@+id/rl_stationdetail_stationbox" >
+		
+        <ImageView
+		    android:id="@+id/iv_stationdetail_fragment_shadowtop2"
+		    android:layout_width="fill_parent"
+		    android:scaleType="fitXY"
+		    android:layout_height="wrap_content"
+		    android:layout_alignParentTop="true"
+		    android:contentDescription="@null" />
+	    
+	    <ImageView
+		    android:id="@+id/iv_stationdetail_fragment_stationlogo"
+		    android:layout_width="61dp"
+		    android:layout_height="60dp"
+		    android:paddingRight="0.3dp"
+		    android:layout_below="@+id/iv_stationdetail_fragment_shadowtop2"
+		    android:background="@color/RadiothekBlueLight"
+		    android:src="@drawable/ic_default_station"
+		    android:layout_alignParentLeft="true"
+		    android:contentDescription="@null" />
+	    
+	    <ImageView android:layout_height="60dp"
+	        android:layout_width="0.5dp"
+	        android:background="@color/RadiothekBlueLight"
+	        android:layout_toLeftOf="@+id/iv_stationdetail_fragment_fav"
+	        android:contentDescription="@null" />
+	    
+	    <ImageView
+		    android:id="@+id/iv_stationdetail_fragment_fav"
+		    android:layout_width="wrap_content"
+		    android:layout_height="60dp"
+		    android:layout_below="@+id/iv_stationdetail_fragment_shadowtop2"
+		    android:layout_alignParentRight="true"
+		    android:layout_marginLeft="10dp"
+        	android:layout_marginRight="10dp"
+		    android:contentDescription="@null" />
+	    
+	    <LinearLayout android:layout_width="match_parent"
+	        android:layout_height="60dp"
+	        android:gravity="center_vertical"
+	        android:orientation="vertical"
+	        android:layout_alignParentTop="true"
+	      	android:layout_toRightOf="@+id/iv_stationdetail_fragment_stationlogo"
+		    android:layout_toLeftOf="@+id/iv_stationdetail_fragment_fav" >
+		    
+		    <TextView
+		        android:id="@+id/tv_stationdetail_item_stationname"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:paddingLeft="10dp"
+		        android:paddingRight="5dp"
+		        android:textColor="@color/RadiothekBlueLight"
+		        android:textStyle="bold"
+		        android:text="@string/playerfragment.text.loading"
+		        android:textAppearance="?android:attr/textAppearanceSmall" />
+		    
+		    <TextView
+		        android:id="@+id/tv_stationdetail_item_stationgenre"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:paddingLeft="10dp"
+		        android:paddingRight="5dp"
+		        android:textColor="@color/RadiothekGrey"
+		        android:text="@string/playerfragment.text.loading"
+		        android:textAppearance="?android:attr/textAppearanceSmall" />	
+		    
+		</LinearLayout>	
+		
+	</RelativeLayout>
+	
+    <RelativeLayout android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:id="@+id/rl_stationdetail_morestations"
+	    android:background="@color/RadiothekBlueLight" >
+	    
+        <ImageView
+		    android:id="@+id/iv_stationdetail_fragment_shadowtop3"
+		    android:layout_width="fill_parent"
+		    android:scaleType="fitXY"
+		    android:layout_height="0.5dp"
+		    android:layout_alignParentTop="true"
+		    android:contentDescription="@null" />
+	    
+        <TextView
+	        android:id="@+id/tv_stationdetail_morestations"
+	        android:layout_width="wrap_content"
+	        android:layout_height="30dp"
+	        android:layout_below="@+id/iv_stationdetail_fragment_shadowtop3"
+	        android:paddingLeft="5dp"
+	        android:paddingRight="5dp"
+	        android:layout_marginTop="10dp"
+	        android:textColor="@color/RealWhite"
+	        android:text="@string/playerfragment.text.morestations"
+	        android:textAppearance="?android:attr/textAppearanceSmall" />	
+	        
+        <HorizontalScrollView
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@+id/tv_stationdetail_morestations" >
+	        <LinearLayout
+	            android:id="@+id/ll_stationdetail_morestations"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:orientation="horizontal"
+	            android:padding="5dp"
+	            />
+	    </HorizontalScrollView>
+        
+        
+    </RelativeLayout>
+    
+</LinearLayout>
+
+

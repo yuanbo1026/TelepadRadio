@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_drawer_item_container"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:background="@color/drawer_listview_bg"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="horizontal" >
+
+    <LinearLayout
+        android:id="@+id/telepad_drawer_item_linearlayout"
+        android:layout_width="350dp"
+        android:layout_height="60dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/drawer_listview_item_bg"
+        android:orientation="horizontal"
+        android:padding="10dp" >
+
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start|center_vertical"
+            android:layout_marginRight="80dp"
+            android:layout_marginLeft="25dp"
+            android:clickable="false"
+            android:contentDescription="@null"
+            android:focusable="false"
+            android:src="@drawable/ic_actionbar_home" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|center_vertical"
+            android:clickable="false"
+            android:focusable="false"
+            android:singleLine="true"
+            android:text="Weitersagen"
+            android:textColor="@drawable/general_text_color"
+            android:textAppearance="?android:attr/textAppearanceListItemSmall" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_below="@+id/telepad_drawer_item_linearlayout"
+        android:background="@color/drawer_listview_bg"
+        android:clickable="false"
+        android:focusable="false" />
+
+</RelativeLayout>

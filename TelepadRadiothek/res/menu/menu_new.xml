@@ -1,0 +1,45 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    
+    <item
+	    android:id="@+id/action_home"
+	    android:orderInCategory="100"
+        android:title="@string/search_label"
+        android:icon="@drawable/actionbar_home_selector"
+        android:background="@drawable/actionbar_item_background_selector"
+        android:showAsAction="always|collapseActionView" />
+    
+	<item
+	    android:id="@+id/search"
+	    android:orderInCategory="200"
+        android:title="@string/search_label"
+        android:icon="@drawable/actionbar_search_selector"
+        android:background="@drawable/actionbar_item_background_selector"
+        android:showAsAction="always|collapseActionView"
+        android:actionViewClass="android.widget.SearchView" />
+	
+	<item
+        android:id="@+id/action_favorites"
+        android:orderInCategory="300"
+        android:showAsAction="ifRoom"
+        android:icon="@drawable/actionbar_fav_selector"
+        android:background="@drawable/actionbar_item_background_selector"
+        android:title="@string/mainactivity.button.favs"/>
+	
+	<item
+        android:id="@+id/action_genres"
+        android:orderInCategory="400"
+        android:showAsAction="ifRoom"
+        android:icon="@drawable/actionbar_genre_selector"
+        android:background="@drawable/actionbar_item_background_selector"
+        android:title="@string/mainactivity.button.genre"/>  
+	
+	<item
+        android:id="@+id/action_drawer"
+        android:orderInCategory="500"
+        android:showAsAction="ifRoom|collapseActionView"
+        android:icon="@drawable/actionbar_menu_selector"
+        android:background="@drawable/actionbar_item_background_selector"
+        android:title="@string/mainactivity.button.menu"/>
+	
+	
+</menu>

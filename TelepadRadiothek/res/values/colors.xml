@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="RadiothekBlueLight">#1abc9c</color>
+    <color name="RadiothekBlueDark">#1e303d</color>
+    <color name="RadiothekBlueLight75">#E61abc9c</color>
+    <color name="RadiothekHighlightColor">#E6b6f5e8</color>
+    <color name="RadiothekGrey">#a1a1a1</color>
+    <color name="RadiothekWhite">#ececec</color>
+    <color name="RealWhite">#fff</color>
+    <color name="IABItemBackground">#eeeeee</color>
+
+    <!-- GridView Item Background color -->
+    <color name="Grid_Item_history">#36a998</color>
+    <color name="Grid_Item_favs">#318e84</color>
+    <color name="Grid_Item_genre">#2c7274</color>
+    <color name="Grid_Item_country">#275761</color>
+    <color name="Gird_item_bg_h">#9afde9</color>
+    <color name="Grid_item_text_color">#ffffff</color>
+    <color name="Grid_item_text_color_h">#223b4f</color>
+
+    <!-- action bar Background color -->
+    <color name="action_bar_bg">#223b4f</color>
+    <color name="action_bar_pressed_bg">#9afde9</color>
+
+    <!-- drawer item bg color #223b4f 1e303e -->
+    <color name="drawer_listview_bg">#1e303e</color>
+    <color name="drawer_item_bg">#223b4f</color>
+    <color name="drawer_item_bg_pressed">#9afde9</color>
+
+    <!-- genre list gridview item color array -->
+    <color name="gridview_item_position_0">#36a998</color>
+    <color name="gridview_item_position_1">#2c7274</color>
+    <color name="gridview_item_position_2">#339c8e</color>
+    <color name="gridview_item_position_3">#2a656b</color>
+    <color name="gridview_item_position_4">#318e84</color>
+    <color name="gridview_item_position_5">#275761</color>
+    <color name="gridview_item_position_6">#2e807c</color>
+    <color name="gridview_item_position_7">#244a57</color>
+    <color name="gridview_item_bg_h">#9afde9</color>
+
+    <!-- general text color -->
+    <color name="general_text_color">#ffffff</color>
+    <color name="general_text_color_h">#223b4f</color>
+
+    <!-- station list item bg -->
+    <color name="station_list_item_bg">#244a57</color>
+    <color name="station_list_item_bg_h">#9afde9</color>
+
+    <!-- station detail station information text color -->
+    <color name="station_detail_text_color_green">#38ab9a</color>
+
+    <!-- station detail button bg color -->
+    <color name="station_detail_forward_button_green">#2c7274</color>
+    <color name="station_detail_play_button_green">#3bc5ab</color>
+
+    <!-- station detail function button bg -->
+    <color name="statiion_detail_function_button_bg">#112433</color>
+    <color name="station_detail_function_button_bg_h">#98fee9</color>
+
+</resources>

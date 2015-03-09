@@ -1,6 +1,6 @@
 <?xml version = "1.0" encoding = "utf-8"?>
 <!-- Used for better performance and size portions -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,7 +12,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/telepad_genre_gridview"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="match_parent"
         android:layout_gravity="fill_horizontal"
         android:layout_weight="1"
         android:background="#E8E8E8"
@@ -24,4 +24,18 @@
         app:stretchMode="columnWidth"
         app:verticalSpacing="0dp" />
 
-</LinearLayout>
+    <Button
+        android:id="@+id/buttonPrevious"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|left"
+        android:text="Previous" />
+
+    <Button
+        android:id="@+id/buttonNext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|right"
+        android:text="Next" />
+
+</FrameLayout>

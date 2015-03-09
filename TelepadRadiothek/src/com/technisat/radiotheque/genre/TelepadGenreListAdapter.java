@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.TypedArray;
 import android.os.Build;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -34,6 +35,9 @@ public class TelepadGenreListAdapter extends BaseAdapter {
 	private int columnWidth;
 	private int rowHeight;
 
+	public int pageIndex = 0;
+	public final static int VIEW_COUNT = 8;
+
 	public TelepadGenreListAdapter(Context context, List<Genre> genreList) {
 		mGenreItems = new ArrayList<Genre>(genreList);
 		mContext = context;
@@ -50,7 +54,7 @@ public class TelepadGenreListAdapter extends BaseAdapter {
 			@Override
 			public void onGlobalLayout() {
 				rowHeight = 250;
-				columnWidth = 256 ;
+				columnWidth = 256;
 
 				TelepadGenreActivity.gridView.setRowHeight(rowHeight);
 
@@ -72,24 +76,35 @@ public class TelepadGenreListAdapter extends BaseAdapter {
 
 	@Override
 	public int getCount() {
-		return mGenreItems.size();
+//		return mGenreItems.size();
+		 int ori = VIEW_COUNT * pageIndex;
+
+         if (mGenreItems.size() - ori < VIEW_COUNT) {
+               return mGenreItems.size() - ori;
+         } else {
+               return VIEW_COUNT;
+         }
 	}
 
 	@Override
 	public Object getItem(int i) {
+//		Log.e("TelepadGenreListAdapter","Object getItem(int i);  pageIndex: "+pageIndex);
 		return mGenreItems.get(i);
 	}
 
 	@Override
 	public long getItemId(int i) {
-		return 1;
+		return i;
 	}
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 
-		final Genre g = (Genre) getItem(position);
+		final Genre g = (Genre) getItem(position+VIEW_COUNT * pageIndex);
 		ViewHandler handler;
+		Log.e("Telepad","getVIEW-->position: "+(position+VIEW_COUNT * pageIndex));
+//		Log.e("TelepadGenreListAdapter","getItem(position) :"+position);
+		
 
 		if (convertView == null) {
 			LayoutInflater inflater = (LayoutInflater) mContext
@@ -110,44 +125,31 @@ public class TelepadGenreListAdapter extends BaseAdapter {
 		} else {
 			handler = (ViewHandler) convertView.getTag();
 		}
-//"station_list_item_bg_colors"
-//		String[] colorArray = mContext.getResources().getStringArray(R.array.station_list_item_bg_colors);
-//		int indentify ;
-//		if(position>=8){
-//			indentify = mContext.getResources().getIdentifier(colorArray[position % 8], "drawable", mContext.getPackageName());
-//		}else{
-//			indentify = mContext.getResources().getIdentifier(colorArray[position], "drawable", mContext.getPackageName());
-//		}
-//		handler.ll.setBackgroundResource(R.drawable.station_list_item_bg_0);
-		
-//		String[] colorArray = 
-//				mContext.getResources().getStringArray(R.array.gridview_item_bg_colors);
-//		int indentify ;
-//		if(position>=8){
-//			indentify = mContext.getResources().getIdentifier(colorArray[position % 8], "color", mContext.getPackageName());
-//		}else{
-//			indentify = mContext.getResources().getIdentifier(colorArray[position], "color", mContext.getPackageName());
-//		}
-//		handler.ll.setBackgroundResource(indentify);
-		
-		TypedArray colorArray = mContext.getResources().obtainTypedArray(R.array.genre_list_item_bg_colors);
-		int indentify ;
-		if(position>=8){
-			indentify = colorArray.getResourceId(position % 8, -1); //mContext.getResources().getIdentifier(colorArray[position % 8], "color", mContext.getPackageName());
-		}else{
-			indentify = colorArray.getResourceId(position, -1); //mContext.getResources().getIdentifier(colorArray[position], "color", mContext.getPackageName());
+		// "station_list_item_bg_colors"
+
+		TypedArray colorArray = mContext.getResources().obtainTypedArray(
+				R.array.genre_list_item_bg_colors);
+		int indentify;
+		if (position >= 8) {
+			indentify = colorArray.getResourceId(position % 8, -1); // mContext.getResources().getIdentifier(colorArray[position
+																	// % 8],
+																	// "color",
+																	// mContext.getPackageName());
+		} else {
+			indentify = colorArray.getResourceId(position, -1); // mContext.getResources().getIdentifier(colorArray[position],
+																// "color",
+																// mContext.getPackageName());
 		}
 		handler.ll.setBackgroundResource(indentify);
 		colorArray.recycle();
-		
+
 		/**
 		 * calculate position of the item, and set the color
 		 */
-		
-		
+
 		handler.tv.setText(g.getName());
-//		handler.tv.setTextColor(R.drawable.general_text_color);
-		
+		// handler.tv.setTextColor(R.drawable.general_text_color);
+
 		handler.ll.setClickable(true);
 		handler.ll.setOnClickListener(new OnClickListener() {
 
@@ -177,5 +179,5 @@ public class TelepadGenreListAdapter extends BaseAdapter {
 		TextView tv;
 		LinearLayout ll;
 	}
-	
+
 }

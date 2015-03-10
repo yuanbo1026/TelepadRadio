@@ -137,17 +137,17 @@ public class TelepadMainActivity extends Activity implements
 			i.putExtra(getString(R.string.radiothek_bundle_stationlistparcelable),sList);
 			startActivity(i);
 			break;
-		case 1:
+		case 2:
 			i = new Intent(TelepadMainActivity.this, StationService.class);
 			i.setAction(getString(R.string.radiothek_stationservice_startgenreactivity));
 			startService(i);
 			break;
-		case 2:
+		case 3:
 			i = new Intent(TelepadMainActivity.this, StationService.class);
 			i.setAction(getString(R.string.radiothek_stationservice_startcountryactivity));
 			startService(i);
 			break;
-		case 3:
+		case 1:
 			stationList = dbHandler.getAllFavoriteStations();
 			sList = new StationList(stationList);
 			i = new Intent(TelepadMainActivity.this,TelepadDisplayStationListActivity.class);

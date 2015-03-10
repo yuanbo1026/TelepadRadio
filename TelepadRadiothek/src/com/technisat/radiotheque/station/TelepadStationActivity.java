@@ -18,6 +18,7 @@ import com.technisat.radiotheque.android.Misc;
 import com.technisat.radiotheque.broadcast.IMediaPlayerBroadcastListener;
 import com.technisat.radiotheque.broadcast.MediaPlayerBroadcastReceiver;
 import com.technisat.radiotheque.entity.Station;
+import com.technisat.radiotheque.entity.StationList;
 import com.technisat.radiotheque.genre.SquareImageView;
 import com.technisat.radiotheque.service.MediaPlayerService;
 import com.technisat.radiotheque.stationdetail.TelepadStationDetailFragment;
@@ -37,6 +38,7 @@ public class TelepadStationActivity extends FragmentActivity implements
 	private Handler mHandler;
 	private Runnable mRunnable;
 	private Context mContext;
+	private StationList sList;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -53,10 +55,10 @@ public class TelepadStationActivity extends FragmentActivity implements
 
 		mImageLoader = ImageLoader.getInstance();
 
-		Intent intent = getIntent();
-		mStation = intent
-				.getParcelableExtra(getString(R.string.radiothek_bundle_station));
-
+		Intent intent = this.getIntent();
+		mStation = intent.getParcelableExtra(getString(R.string.radiothek_bundle_station));
+		sList = intent.getParcelableExtra(getString(R.string.radiothek_bundle_stationlistparcelable));
+		
 		mStationDetailFragment = (TelepadStationDetailFragment) getSupportFragmentManager()
 				.findFragmentById(R.id.telepad_fg_stationdetail);
 
@@ -78,7 +80,6 @@ public class TelepadStationActivity extends FragmentActivity implements
 		mHandler = new Handler();
         mRunnable = new Runnable() {
             public void run() {
-//            	Toast.makeText(mContext, "After 2 second start up the Fullscreen activity ", Toast.LENGTH_LONG).show();
             	Intent i = new Intent(mContext, TelepadFullscreenStationActivity.class);
             	i.putExtra(mContext.getString(R.string.radiothek_bundle_station), mStation);
 				mContext.startActivity(i);	

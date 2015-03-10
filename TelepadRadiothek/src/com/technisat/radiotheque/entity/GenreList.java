@@ -24,9 +24,9 @@ public class GenreList implements Parcelable{
 	
 	public void logGenreList(){
 		for (Genre genre : mGenreList) {
-			Log.d("Nexxoo", "Genre: " + genre.getName());
+			Log.e("Nexxoo", "Genre: " + genre.getName());
 			for (Station s : genre.getsList()) {
-				Log.d("Nexxoo", "Station: " + s.getStationName());
+				Log.e("Nexxoo", "Station: " + s.getStationName());
 			}
 		}
 	}

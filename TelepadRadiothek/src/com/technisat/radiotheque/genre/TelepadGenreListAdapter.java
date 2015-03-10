@@ -76,14 +76,17 @@ public class TelepadGenreListAdapter extends BaseAdapter {
 
 	@Override
 	public int getCount() {
-//		return mGenreItems.size();
-		 int ori = VIEW_COUNT * pageIndex;
-
-         if (mGenreItems.size() - ori < VIEW_COUNT) {
-               return mGenreItems.size() - ori;
-         } else {
-               return VIEW_COUNT;
-         }
+		return mGenreItems.size();
+		/**
+		 * leave this paging issue behind
+		 */
+//		 int ori = VIEW_COUNT * pageIndex;
+//
+//         if (mGenreItems.size() - ori < VIEW_COUNT) {
+//               return mGenreItems.size() - ori;
+//         } else {
+//               return VIEW_COUNT;
+//         }
 	}
 
 	@Override
@@ -100,9 +103,10 @@ public class TelepadGenreListAdapter extends BaseAdapter {
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 
-		final Genre g = (Genre) getItem(position+VIEW_COUNT * pageIndex);
+//		final Genre g = (Genre) getItem(position+VIEW_COUNT * pageIndex);
+		final Genre g = (Genre) getItem(position);
 		ViewHandler handler;
-		Log.e("Telepad","getVIEW-->position: "+(position+VIEW_COUNT * pageIndex));
+//		Log.e("Telepad","getVIEW-->position: "+(position+VIEW_COUNT * pageIndex));
 //		Log.e("TelepadGenreListAdapter","getItem(position) :"+position);
 		
 

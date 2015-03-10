@@ -34,7 +34,7 @@ public class StationList implements Parcelable{
 		}
 	}
 	
-	// Parcelling part
+	// Parceling part
 	public StationList(Parcel in){
 		this.mStationList = new ArrayList<Station>();
         in.readList(this.mStationList, Station.class.getClassLoader());

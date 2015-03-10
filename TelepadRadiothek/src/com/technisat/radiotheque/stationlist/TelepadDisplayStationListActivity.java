@@ -12,6 +12,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.widget.DrawerLayout;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -53,7 +54,6 @@ public class TelepadDisplayStationListActivity extends FragmentActivity
 	private TelepadItemListAdapter mItemListAdapter;
 	private List<Station> stationList;
 
-
 	private ProgressDialog mProgressBar;
 	private boolean mIsFavList = false;
 
@@ -65,6 +65,7 @@ public class TelepadDisplayStationListActivity extends FragmentActivity
 	public static final int VIEW_GRID = 1;
 
 	private Context mContext;
+	private StationList sList;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -77,11 +78,11 @@ public class TelepadDisplayStationListActivity extends FragmentActivity
 		mMyDrawer = new MyDrawer(this);
 		mDrawerLayout = mMyDrawer.getDrawerLayout();
 		mContext = this;
-		
-		
+
 		LayoutInflater inflater = getLayoutInflater();
 		RelativeLayout container = (RelativeLayout) findViewById(R.id.frame_container);
-		inflater.inflate(R.layout.telepad_activity_displaystationlist, container);
+		inflater.inflate(R.layout.telepad_activity_displaystationlist,
+				container);
 
 		Intent intent = getIntent();
 		handleIntent(intent);
@@ -89,26 +90,28 @@ public class TelepadDisplayStationListActivity extends FragmentActivity
 		mViewSwitcher = (ViewSwitcher) findViewById(R.id.viewswitcher);
 		mViewSwitcher.setDisplayedChild(VIEW_LIST);
 
-		//Get fragment for player
-//		mPlayerFragment = (PlayerFragement) getSupportFragmentManager().findFragmentById(R.id.fg_genre_player);
-//		mBroadcast = new MediaPlayerBroadcastReceiver(this, mPlayerFragment);
-//		mBroadcast.addListener(this);
-//		registerReceiver(mBroadcast.getReceiver(), mBroadcast.getIntentFiler());
-//		mBroadcast.requestUpdateFromService();
+		// Get fragment for player
+		// mPlayerFragment = (PlayerFragement)
+		// getSupportFragmentManager().findFragmentById(R.id.fg_genre_player);
+		// mBroadcast = new MediaPlayerBroadcastReceiver(this, mPlayerFragment);
+		// mBroadcast.addListener(this);
+		// registerReceiver(mBroadcast.getReceiver(),
+		// mBroadcast.getIntentFiler());
+		// mBroadcast.requestUpdateFromService();
 	}
 
 	public void changeToList(View view) {
 		if (mViewSwitcher.getDisplayedChild() == 1) {
 			mViewSwitcher.showPrevious();
 
-//			ImageButton mBList = (ImageButton) findViewById(R.id.b_list);
-//			mBList.setBackgroundResource(R.color.RealWhite);
-//			mBList.setImageResource(R.drawable.ic_stationlist_blue_light);
-//			ImageButton mBGrid = (ImageButton) findViewById(R.id.b_grid);
-//			mBGrid.setBackgroundResource(R.color.RadiothekBlueLight);
-//			mBGrid.setImageResource(R.drawable.ic_grid_white);
+			// ImageButton mBList = (ImageButton) findViewById(R.id.b_list);
+			// mBList.setBackgroundResource(R.color.RealWhite);
+			// mBList.setImageResource(R.drawable.ic_stationlist_blue_light);
+			// ImageButton mBGrid = (ImageButton) findViewById(R.id.b_grid);
+			// mBGrid.setBackgroundResource(R.color.RadiothekBlueLight);
+			// mBGrid.setImageResource(R.drawable.ic_grid_white);
 
-//			mBroadcast.requestUpdateFromService();
+			// mBroadcast.requestUpdateFromService();
 		}
 	}
 
@@ -116,14 +119,14 @@ public class TelepadDisplayStationListActivity extends FragmentActivity
 		if (mViewSwitcher.getDisplayedChild() == 0) {
 			mViewSwitcher.showNext();
 
-//			ImageButton mBList = (ImageButton) findViewById(R.id.b_list);
-//			mBList.setBackgroundResource(R.color.RadiothekBlueLight);
-//			mBList.setImageResource(R.drawable.ic_stationlist);
-//			ImageButton mBGrid = (ImageButton) findViewById(R.id.b_grid);
-//			mBGrid.setBackgroundResource(R.color.RealWhite);
-//			mBGrid.setImageResource(R.drawable.ic_grid_blue_light);
+			// ImageButton mBList = (ImageButton) findViewById(R.id.b_list);
+			// mBList.setBackgroundResource(R.color.RadiothekBlueLight);
+			// mBList.setImageResource(R.drawable.ic_stationlist);
+			// ImageButton mBGrid = (ImageButton) findViewById(R.id.b_grid);
+			// mBGrid.setBackgroundResource(R.color.RealWhite);
+			// mBGrid.setImageResource(R.drawable.ic_grid_blue_light);
 
-//			mBroadcast.requestUpdateFromService();
+			// mBroadcast.requestUpdateFromService();
 		}
 	}
 
@@ -161,8 +164,7 @@ public class TelepadDisplayStationListActivity extends FragmentActivity
 
 			mProgressBar = new ProgressDialog(this);
 			mProgressBar.setCancelable(true);
-			mProgressBar
-					.setMessage(getString(R.string.displaystationlistactivity_text_searchingdb));
+			mProgressBar.setMessage(getString(R.string.displaystationlistactivity_text_searchingdb));
 			mProgressBar.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 			mProgressBar.show();
 
@@ -176,20 +178,14 @@ public class TelepadDisplayStationListActivity extends FragmentActivity
 		}
 
 		/** Handle MoreStationsOfGenre Action Intent */
-		else if (intent.getAction() != null
-				&& intent
-						.getAction()
-						.equals(getString(R.string.radiothek_action_morestationsofgenre))) {
+		else if (intent.getAction() != null && intent.getAction().equals(getString(R.string.radiothek_action_morestationsofgenre))) {
 
-			long genreId = intent.getLongExtra(
-					getString(R.string.radiothek_bundle_long), 9);
-			int count = intent.getIntExtra(
-					getString(R.string.radiothek_bundle_int), 50);
+			long genreId = intent.getLongExtra(getString(R.string.radiothek_bundle_long), 9);
+			int count = intent.getIntExtra(getString(R.string.radiothek_bundle_int), 50);
 
 			mProgressBar = new ProgressDialog(this);
 			mProgressBar.setCancelable(true);
-			mProgressBar
-					.setMessage(getString(R.string.displaystationlistactivity_text_loadstations));
+			mProgressBar.setMessage(getString(R.string.displaystationlistactivity_text_loadstations));
 			mProgressBar.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 			mProgressBar.show();
 
@@ -202,22 +198,16 @@ public class TelepadDisplayStationListActivity extends FragmentActivity
 		}
 
 		/** Handle MoreStationsOfCountry Action Intent */
-		else if (intent.getAction() != null
-				&& intent
-						.getAction()
-						.equals(getString(R.string.radiothek_action_morestationsofcountry))) {
+		else if (intent.getAction() != null && intent.getAction().equals(getString(R.string.radiothek_action_morestationsofcountry))) {
 
 			String iso = "en";
 			if (intent.hasExtra(getString(R.string.radiothek_bundle_string)))
-				iso = intent
-						.getStringExtra(getString(R.string.radiothek_bundle_string));
-			int count = intent.getIntExtra(
-					getString(R.string.radiothek_bundle_int), 50);
+				iso = intent.getStringExtra(getString(R.string.radiothek_bundle_string));
+			int count = intent.getIntExtra(getString(R.string.radiothek_bundle_int), 50);
 
 			mProgressBar = new ProgressDialog(this);
 			mProgressBar.setCancelable(true);
-			mProgressBar
-					.setMessage(getString(R.string.displaystationlistactivity_text_loadstations));
+			mProgressBar.setMessage(getString(R.string.displaystationlistactivity_text_loadstations));
 			mProgressBar.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 			mProgressBar.show();
 
@@ -258,14 +248,14 @@ public class TelepadDisplayStationListActivity extends FragmentActivity
 		}
 
 		/** Sets ItemListAdapter and the ListView */
-		StationList sList = intent
+		sList = intent
 				.getParcelableExtra(getString(R.string.radiothek_bundle_stationlistparcelable));
 		if (sList != null && sList.getStationList() != null) {
 			stationList = sList.getStationList();
 
 			mItemListAdapter = new TelepadItemListAdapter(this,
-					R.layout.telepad_stationlist_list_item, stationList, mIsFavList,
-					R.layout.telepad_stationlist_list_item);
+					R.layout.telepad_stationlist_list_item, stationList,
+					mIsFavList, R.layout.telepad_stationlist_list_item);
 			mGehoertListView.setAdapter(mItemListAdapter);
 			// mItemGridAdapter = new ItemListAdapter(this,
 			// R.layout.stationlist_list_item, stationList, mIsFavList,
@@ -281,15 +271,19 @@ public class TelepadDisplayStationListActivity extends FragmentActivity
 					int position, long id) {
 				Station s = mItemListAdapter.getItem(position);
 				if (s != null) {
-
-					Intent i =  new Intent(TelepadDisplayStationListActivity.this, MediaPlayerService.class);
-				    i.setAction(getString(R.string.radiothek_mediaplayerservice_playstream));			    
-				    i.putExtra(getString(R.string.radiothek_bundle_station), s);
-				    startService(i);
+					// TODO item OnClick event
+					Intent i = new Intent(TelepadDisplayStationListActivity.this,MediaPlayerService.class);
+					i.setAction(getString(R.string.radiothek_mediaplayerservice_playstream));
+					i.putExtra(getString(R.string.radiothek_bundle_station), s);
+					startService(i);
 					
-					Intent intent = new Intent(mContext, TelepadStationActivity.class);
-					i.putExtra(mContext.getString(R.string.radiothek_bundle_station), s);
-					mContext.startActivity(intent);	
+					int index = sList.getStationList().indexOf(s);
+					Log.e("TelepadDisplayStationListActivity", "The playing station is the No."+index+" in the Station List.");
+
+					Intent intent = new Intent(TelepadDisplayStationListActivity.this,TelepadStationActivity.class);
+					intent.putExtra(getString(R.string.radiothek_bundle_station), s); 
+					intent.putExtra(getString(R.string.radiothek_bundle_stationlistparcelable), sList);
+					startActivity(intent);
 				}
 			}
 		});
@@ -318,7 +312,7 @@ public class TelepadDisplayStationListActivity extends FragmentActivity
 	protected void onDestroy() {
 		if (mMyDrawer != null)
 			mMyDrawer.finalize();
-//		unregisterReceiver(mBroadcast.getReceiver());
+		// unregisterReceiver(mBroadcast.getReceiver());
 		super.onDestroy();
 	}
 

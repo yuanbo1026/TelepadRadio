@@ -47,7 +47,7 @@ public class TelepadGenreActivity extends FragmentActivity implements
 	public static TwoWayGridView gridView;
 
 	private boolean mIsScrollingUp;
-	private int mLastFirstVisibleItem = 0;
+	private int mLastFirstVisibleItem;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -87,57 +87,58 @@ public class TelepadGenreActivity extends FragmentActivity implements
 			}
 			gridView.setOnItemClickListener(this);
 			gridView.setOnScrollListener(new OnScrollListener() {
-				private int currentVisibleItemCount;
-				private int currentScrollState;
-				private int currentFirstVisibleItem;
-				private int totalItem;
+//				private int currentVisibleItemCount;
+//				private int currentScrollState;
+//				private int currentFirstVisibleItem;
+//				private int totalItem;
 
-				private void isScrollCompleted(boolean isScrollUp) {
-					if (totalItem - currentFirstVisibleItem == currentVisibleItemCount
-							&& this.currentScrollState == SCROLL_STATE_IDLE) {
-						/** To do code here */
-						if (isScrollUp)
-							mGenreGridAdapter.pageIndex++;
-						else
-							mGenreGridAdapter.pageIndex--;
-						Log.e("Telepad",
-								"OnScrollListener mGenreGridAdapter.pageIndex :"
-										+ mGenreGridAdapter.pageIndex);
-						mGenreGridAdapter.notifyDataSetChanged();
-
-					}
-
-				}
+//				private void isScrollCompleted(boolean isScrollUp) {
+//					if (totalItem - currentFirstVisibleItem == currentVisibleItemCount
+//							&& this.currentScrollState == SCROLL_STATE_IDLE) {
+//						/** To do code here */
+//						if (isScrollUp)
+//							mGenreGridAdapter.pageIndex++;
+//						else
+//							mGenreGridAdapter.pageIndex--;
+//						Log.e("Telepad",
+//								"OnScrollListener mGenreGridAdapter.pageIndex :"
+//										+ mGenreGridAdapter.pageIndex);
+//						mGenreGridAdapter.notifyDataSetChanged();
+//
+//					}
+//
+//				}
 
 				@Override
 				public void onScrollStateChanged(TwoWayAbsListView view,
 						int scrollState) {
 					
-					if (view.getId() == gridView.getId()) {
-				        final int currentFirstVisibleItem = gridView.getFirstVisiblePosition();
-
-				        if (currentFirstVisibleItem > mLastFirstVisibleItem) {
-				            mIsScrollingUp = false;
-				        } else if (currentFirstVisibleItem < mLastFirstVisibleItem) {
-				            mIsScrollingUp = true;
-				        }
-
-				        mLastFirstVisibleItem = currentFirstVisibleItem;
-				    }
+//					if (view.getId() == gridView.getId()) {
+//				        final int currentFirstVisibleItem = gridView.getFirstVisiblePosition();
+//
+//				        if (currentFirstVisibleItem > mLastFirstVisibleItem) {
+//				            mIsScrollingUp = true;
+//				        } else if (currentFirstVisibleItem < mLastFirstVisibleItem) {
+//				            mIsScrollingUp = false;
+//				        }
+//
+//				        mLastFirstVisibleItem = currentFirstVisibleItem;
+//				    }
 					
 					
 //					this.currentScrollState = scrollState;
+					/**
+					 * detect the scrolling direction
+					 */
 //					if (scrollState == 0)// scrolling stopped
 //					{
 //						if (view.getId() == gridView.getId()) {
 //							final int currentFirstVisibleItem = gridView
 //									.getFirstVisiblePosition();
-//							if (currentFirstVisibleItem > mLastFirstVisibleItem) {
+//							if (currentFirstVisibleItem > mLastFirstVisibleItem) {//scrolling down
 //								mIsScrollingUp = true;
-//								Log.e("a", "scrolling down...");
-//							} else if (currentFirstVisibleItem < mLastFirstVisibleItem) {
+//							} else if (currentFirstVisibleItem < mLastFirstVisibleItem) {//scrolling up
 //								mIsScrollingUp = false;
-//								Log.e("a", "scrolling up...");
 //							}else if(currentFirstVisibleItem == mLastFirstVisibleItem){
 //								return;
 //							}
@@ -145,7 +146,7 @@ public class TelepadGenreActivity extends FragmentActivity implements
 //							 mLastFirstVisibleItem = currentFirstVisibleItem;
 //
 //						}
-//						this.isScrollCompleted(mIsScrollingUp);
+////						this.isScrollCompleted(mIsScrollingUp);
 //					}
 
 				}
@@ -154,9 +155,9 @@ public class TelepadGenreActivity extends FragmentActivity implements
 				public void onScroll(TwoWayAbsListView view,
 						int firstVisibleItem, int visibleItemCount,
 						int totalItemCount) {
-					this.currentFirstVisibleItem = firstVisibleItem;
-					this.currentVisibleItemCount = visibleItemCount;
-					this.totalItem = totalItemCount;
+//					this.currentFirstVisibleItem = firstVisibleItem;
+//					this.currentVisibleItemCount = visibleItemCount;
+//					this.totalItem = totalItemCount;
 
 				}
 			});
@@ -276,7 +277,6 @@ public class TelepadGenreActivity extends FragmentActivity implements
 		if (mCountryGridAdapter != null) {
 			// we have a Country
 			Country country = (Country) mCountryGridAdapter.getItem(position);
-			;
 			if (country.getsList() != null && country.getsList().size() > 0) {
 				Intent i = new Intent(TelepadGenreActivity.this,
 						MediaPlayerService.class);

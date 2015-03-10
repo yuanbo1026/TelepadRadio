@@ -15,12 +15,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.technisat.telepadradiothek.R;
 import com.technisat.radiotheque.android.DatabaseHandler;
 import com.technisat.radiotheque.android.Misc;
 import com.technisat.radiotheque.entity.Station;
+import com.technisat.radiotheque.entity.StationList;
 
 public class TelepadStationDetailFragment extends Fragment {
 
@@ -30,14 +32,17 @@ public class TelepadStationDetailFragment extends Fragment {
 	private LinearLayout mFunction;
 
 	private ImageView mIvPlayButton;
+	private ImageView mIvForwardButton;
+	private ImageView mIvBackButton;
+	
 	private ImageView mIvBuyIcon;
-
 	private ImageView mIvFavIcon;
 
 	private TextView mTvStationName;
 	private TextView mTvStationGenre;
 
 	private Station mCurrentStation;
+	private StationList sList;
 
 	private OnStationDetailListener mListener;
 	/**
@@ -67,8 +72,8 @@ public class TelepadStationDetailFragment extends Fragment {
 		ImageLoader.getInstance();
 
 		Intent intent = getActivity().getIntent();
-		mCurrentStation = intent
-				.getParcelableExtra(getString(R.string.radiothek_bundle_station));
+		mCurrentStation = intent.getParcelableExtra(getString(R.string.radiothek_bundle_station));
+		sList = intent.getParcelableExtra(getString(R.string.radiothek_bundle_stationlistparcelable));
 
 	}
 
@@ -88,13 +93,33 @@ public class TelepadStationDetailFragment extends Fragment {
 
 	private void initUI() {
 		if (mCurrentStation != null) {
+			
 			mIvPlayButton.setClickable(true);
 			mIvPlayButton.setOnClickListener(new OnClickListener() {
-
 				@Override
 				public void onClick(View v) {
 					onPlayButtonPressed(mCurrentStation);
 				}
+			});
+			
+			mIvForwardButton.setClickable(true);
+			mIvForwardButton.setOnClickListener(new OnClickListener(){
+				@Override
+				public void onClick(View v) {
+					int index = sList.getStationList().indexOf(mCurrentStation);
+					Toast.makeText(getActivity(), "Next Station index is "+(index+1), Toast.LENGTH_LONG).show();
+				}
+				
+			});
+			
+			mIvBackButton.setClickable(true);
+			mIvBackButton.setOnClickListener(new OnClickListener(){
+				@Override
+				public void onClick(View v) {
+					int index = sList.getStationList().indexOf(mCurrentStation);
+					Toast.makeText(getActivity(), "Previous Station index is "+(index-1), Toast.LENGTH_LONG).show();
+				}
+				
 			});
 
 			setPlayButton(mCurrentStation.isPlaying());
@@ -115,11 +140,9 @@ public class TelepadStationDetailFragment extends Fragment {
 
 					@Override
 					public void onClick(View v) {
-						if (mCurrentStation != null
-								&& mCurrentStation.getBuyLinkAmazon() != null) {
+						if (mCurrentStation != null&& mCurrentStation.getBuyLinkAmazon() != null) {
 							Intent i = new Intent(Intent.ACTION_VIEW);
-							i.setData(Uri.parse(mCurrentStation
-									.getBuyLinkAmazon()));
+							i.setData(Uri.parse(mCurrentStation.getBuyLinkAmazon()));
 							startActivity(i);
 						}
 					}
@@ -130,8 +153,7 @@ public class TelepadStationDetailFragment extends Fragment {
 				@Override
 				public void onClick(View v) {
 					mCurrentStation.setFav(!mCurrentStation.isFav());
-					DatabaseHandler dbhandler = new DatabaseHandler(
-							getActivity());
+					DatabaseHandler dbhandler = new DatabaseHandler(getActivity());
 					dbhandler.insertStation(mCurrentStation);
 					setFavIcon(mCurrentStation.isFav());
 				}
@@ -151,38 +173,28 @@ public class TelepadStationDetailFragment extends Fragment {
 	}
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		View v = inflater.inflate(R.layout.telepad_fragment_station_detail,
-				container, false);
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
+		View v = inflater.inflate(R.layout.telepad_fragment_station_detail,container, false);
 
-		mPlayer = (RelativeLayout) v
-				.findViewById(R.id.telepad_stationdetail_player_rl);
-		mInformation = (LinearLayout) v
-				.findViewById(R.id.telepad_stationdetail_information_ll);
-		mFunction = (LinearLayout) v
-				.findViewById(R.id.telepad_stationdetail_function_ll);
+		mPlayer = (RelativeLayout) v.findViewById(R.id.telepad_stationdetail_player_rl);
+		mInformation = (LinearLayout) v.findViewById(R.id.telepad_stationdetail_information_ll);
+		mFunction = (LinearLayout) v.findViewById(R.id.telepad_stationdetail_function_ll);
 
-		mIvPlayButton = (ImageView) mPlayer
-				.findViewById(R.id.telepad_iv_stationdetail_player_play);
-		mIvBuyIcon = (ImageView) mFunction
-				.findViewById(R.id.telepad_iv_stationdetail_function_buy);
+		mIvPlayButton = (ImageView) mPlayer.findViewById(R.id.telepad_iv_stationdetail_player_play);
+		mIvForwardButton = (ImageView) mPlayer.findViewById(R.id.telepad_iv_stationdetail_player_forward);
+		mIvBackButton = (ImageView) mPlayer.findViewById(R.id.telepad_iv_stationdetail_player_backward);
+		
+		
+		mIvBuyIcon = (ImageView) mFunction.findViewById(R.id.telepad_iv_stationdetail_function_buy);
+		mIvFavIcon = (ImageView) mFunction.findViewById(R.id.telepad_iv_stationdetail_function_fav);
 
-		mIvFavIcon = (ImageView) mFunction
-				.findViewById(R.id.telepad_iv_stationdetail_function_fav);
+		mTvStationName = (TextView) mInformation.findViewById(R.id.telepad_tv_stationdetail_item_stationname);
+		mTvStationGenre = (TextView) mInformation.findViewById(R.id.telepad_tv_stationdetail_item_stationgenre);
 
-		mTvStationName = (TextView) mInformation
-				.findViewById(R.id.telepad_tv_stationdetail_item_stationname);
-		mTvStationGenre = (TextView) mInformation
-				.findViewById(R.id.telepad_tv_stationdetail_item_stationgenre);
+//		mSpinner = (ProgressBar) mPlayer.findViewById(R.id.telepad_pb_station_spinner);
 
-//		mSpinner = (ProgressBar) mPlayer
-//				.findViewById(R.id.telepad_pb_station_spinner);
-
-		mTvStationName.setTypeface(Misc.getCustomFont(getActivity(),
-				Misc.FONT_BOLD));
-		mTvStationGenre.setTypeface(Misc.getCustomFont(getActivity(),
-				Misc.FONT_NORMAL));
+		mTvStationName.setTypeface(Misc.getCustomFont(getActivity(),Misc.FONT_BOLD));
+		mTvStationGenre.setTypeface(Misc.getCustomFont(getActivity(),Misc.FONT_NORMAL));
 
 		initUI();
 
